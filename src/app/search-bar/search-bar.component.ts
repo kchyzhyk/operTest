@@ -9,11 +9,12 @@ import { FormsModule } from '@angular/forms'; // Import FormsModule
 import { debounceTime, distinctUntilChanged, Subject, switchMap } from 'rxjs';
 import { ApiService } from '../api.service';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-search-bar',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, RouterLink],
   templateUrl: './search-bar.component.html',
   styleUrls: ['./search-bar.component.scss'],
 })
@@ -50,5 +51,9 @@ export class SearchBarComponent implements OnInit, OnDestroy {
 
   onSearch(): void {
     this.searchSubject.next(this.searchTerm);
+  }
+
+  hideResults(): void {
+    this.searchTerm = '';
   }
 }

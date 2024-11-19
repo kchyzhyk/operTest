@@ -12,9 +12,10 @@
         <div class="additional-info">
             <p><strong>Release Date:</strong> {{ item?.release_date || item?.first_air_date }}</p>
             <p *ngIf="item?.runtime"><strong>Runtime:</strong> {{ item.runtime }} mins</p>
-            < *ngIf="item?.genres?.length">
+            <p *ngIf="item?.genres?.length">
                 <strong>Genres:</strong>
-            <p>{{ genreNames }}</p>
+            {{ genreNames }}
+            </p>
         </div>
     </div>
 </div>

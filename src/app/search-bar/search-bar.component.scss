@@ -41,6 +41,10 @@ input[type="text"]:hover {
 }
 
 .search-results {
+    position: fixed;
+    right: 10px;
+    max-height: 50vh;
+    overflow-y: scroll;
     margin-top: 10px;
     padding: 10px;
     border: 1px solid #ccc;
@@ -53,8 +57,22 @@ input[type="text"]:hover {
     padding: 0;
 }
 
-.search-results li {
-    margin: 5px 0;
-    font-size: 1rem;
-    color: #333;
+
+.search-results {
+    z-index: 99999999;
+
+    li {
+        margin: 8px 0;
+        font-size: 1rem;
+    }
+
+    a {
+        text-decoration: none;
+        color: #333;
+        transition: color 0.3s;
+
+        &:hover {
+        color: #333;
+        }
+    }
 }
