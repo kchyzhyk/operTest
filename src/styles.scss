@@ -1,4 +1,81 @@
-/* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+/* src/styles/normalize.scss */
+
+/* Apply a consistent box-sizing model across all elements */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Remove list styles */
+ul,
+ol {
+    list-style: none;
+}
+
+/* Remove link styling */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Set a consistent font style */
+body {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    background-color: #fff;
+    color: #333;
+}
+
+/* Set default style for form elements */
+input,
+button,
+select,
+textarea {
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Ensure all images are responsive */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Consistent sizing for buttons */
+button {
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0.5rem 1rem;
+}
+
+/* Remove the outline for all inputs and buttons (but keep focus for accessibility) */
+:focus {
+    outline: none;
+}
+
+/* Set a basic style for tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+th,
+td {
+    padding: 8px;
+    text-align: left;
+}

@@ -1,1 +1,8 @@
-<p>item-list works!</p>
+<cdk-virtual-scroll-viewport itemSize="100" 
+    class="item-list" (scrolledIndexChange)="loadMoreItems()">
+
+    <div *cdkVirtualFor="let item of items">
+        <app-item-card [item]="item"></app-item-card>
+    </div>
+</cdk-virtual-scroll-viewport>
+

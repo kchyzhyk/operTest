@@ -1,0 +1,57 @@
+.item-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    max-width: 30vw;
+
+    &:hover {
+        transform: scale(1.05);
+        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    .item-image {
+        width: 100%;
+        height: auto;
+    }
+
+    .item-info {
+        padding: 1rem;
+
+        .item-title {
+            font-size: 1.2rem;
+            margin: 0 0 0.5rem;
+        }
+
+        .item-rating {
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        .item-overview {
+            font-size: 0.8rem;
+            color: #666;
+            margin: 0.5rem 0;
+            height: 3.6rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .details-button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+
+            &:hover {
+                background-color: #0056b3;
+            }
+        }
+    }
+}

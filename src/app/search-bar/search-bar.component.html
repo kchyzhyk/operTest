@@ -1,1 +1,4 @@
-<p>search-bar works!</p>
+<div class="search-container">
+    <span class="search-icon">🔍</span>
+    <input type="text" [(ngModel)]="searchTerm" (input)="onSearch()" placeholder="Search for movies and TV shows" />
+</div>

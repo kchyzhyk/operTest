@@ -1,1 +1,10 @@
-<p>item-card works!</p>
+<div class="item-card" (click)="onDetailsClick()">
+    <img *ngIf="item?.poster_path" [src]="'https://image.tmdb.org/t/p/w500' + item.poster_path"
+        alt="{{ item?.title || item?.name }}" class="item-image" />
+    <div class="item-info">
+        <h3 class="item-title">{{ item?.title || item?.name }}</h3>
+        <p class="item-rating">Rating: {{ item?.vote_average || 'N/A' }}</p>
+        <p class="item-overview">{{ item?.overview }}</p>
+        <button class="details-button">View Details</button>
+    </div>
+</div>

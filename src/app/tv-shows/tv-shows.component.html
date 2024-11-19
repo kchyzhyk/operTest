@@ -1,0 +1,7 @@
+<section class="tvshows-section">
+    <h3>Top TV Shows</h3>
+    <app-item-list [items]="topTVShows" *ngIf="!isLoadingTVShows"></app-item-list>
+    <div *ngIf="isLoadingTVShows" class="loading-indicator">
+        Loading TV Shows...
+    </div>
+</section>

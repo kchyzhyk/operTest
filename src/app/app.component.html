@@ -1,6 +1,16 @@
-
-<nav>
-  <a routerLink="/" routerLinkActive="active">Home</a>
-</nav>
-
-<router-outlet></router-outlet>
+<header>
+  <nav class="navbar">
+    <app-search-bar></app-search-bar>
+    <ul>
+      <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a></li>
+      <li><a routerLink="tv-shows" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">TV shows</a></li>
+      <li><a routerLink="movies" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Movies</a></li>
+    </ul>
+   </nav>
+</header>
+<main>
+  <router-outlet></router-outlet>
+</main>
+<footer>
+  <p>&copy; 2024 Movie App. All rights reserved.</p>
+</footer>
