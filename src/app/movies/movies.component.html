@@ -1,6 +1,5 @@
 <section class="movies-section">
-    <h3>Top Movies</h3>
-    <app-item-list [items]="topMovies" *ngIf="!isLoadingMovies"></app-item-list>
+    <app-item-list [items]="topMovies" type="movies" *ngIf="!isLoadingMovies"></app-item-list>
     <div *ngIf="isLoadingMovies" class="loading-indicator">
         Loading Movies...
     </div>

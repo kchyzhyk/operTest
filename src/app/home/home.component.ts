@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
 import { ItemListComponent } from '../item-list/item-list.component';
 import { CommonModule } from '@angular/common';
-import { MoviesComponent } from "../movies/movies.component";
-import { TvShowsComponent } from "../tv-shows/tv-shows.component";
+import { MoviesComponent } from '../movies/movies.component';
+import { TvShowsComponent } from '../tv-shows/tv-shows.component';
 
 @Component({
   selector: 'app-home',

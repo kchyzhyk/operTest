@@ -1,19 +1,23 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ScrollingModule } from '@angular/cdk/scrolling';
-import { ItemCardComponent } from "../item-card/item-card.component";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-item-list',
   standalone: true,
-  imports: [CommonModule, ScrollingModule, ItemCardComponent],
+  imports: [CommonModule, ScrollingModule],
   templateUrl: './item-list.component.html',
   styleUrls: ['./item-list.component.scss'],
 })
 export class ItemListComponent implements OnInit {
+  @Input() type: string = '';
   @Input() items: any[] = [];
   currentPage: number = 1;
   isLoading: boolean = false;
+  @Output() detailsRequested = new EventEmitter<any>();
+
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
     this.loadItems();
@@ -22,21 +26,6 @@ export class ItemListComponent implements OnInit {
   loadItems(): void {
     if (this.isLoading) return;
     this.isLoading = true;
-
-    const observer = {
-      next: (response: any) => {
-        this.items = [...this.items, ...response.results];
-        this.currentPage += 1;
-        this.isLoading = false;
-      },
-      error: (err: any) => {
-        console.error('Error loading items:', err);
-        this.isLoading = false;
-      },
-      complete: () => {
-        console.log('Loading items completed.');
-      },
-    };
   }
 
   loadMoreItems(): void {
@@ -50,5 +39,11 @@ export class ItemListComponent implements OnInit {
         this.loadItems();
       }
     }
+  }
+
+  navigateToDetails(item: any): void {
+    console.log(item);
+    const type = item.name ? 'tv' : 'movie';
+    this.router.navigate(['/item', type, item.id]);
   }
 }

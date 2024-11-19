@@ -61,13 +61,10 @@ button {
     border: none;
     padding: 0.5rem 1rem;
 }
-
-/* Remove the outline for all inputs and buttons (but keep focus for accessibility) */
 :focus {
     outline: none;
 }
 
-/* Set a basic style for tables */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -78,4 +75,12 @@ th,
 td {
     padding: 8px;
     text-align: left;
+}
+
+
+.cdk-virtual-scroll-orientation-vertical .cdk-virtual-scroll-content-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: flex-start;
 }

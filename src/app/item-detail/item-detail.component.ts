@@ -17,16 +17,25 @@ export class ItemDetailComponent implements OnInit {
   constructor(private route: ActivatedRoute, private apiService: ApiService) {}
 
   ngOnInit(): void {
-    this.route.params.subscribe((params) => {
-      const itemId = params['id'];
-      this.loadItemDetails(itemId);
+    this.route.paramMap.subscribe((params) => {
+      const id = params.get('id');
+      const type = params.get('type') || 'movie';
+      console.log('Type:', params.get('type'));
+      if (id) {
+        this.loadItemDetails(type, id);
+      }
     });
   }
 
-  loadItemDetails(id: string): void {
-    this.apiService.getDetails('movie', +id).subscribe((data) => {
-      this.item = data;
-    });
+  loadItemDetails(type: string, id: string): void {
+    this.apiService.getDetails(type, +id).subscribe(
+      (data) => {
+        this.item = data;
+      },
+      (error) => {
+        console.error('Error fetching item details:', error);
+      }
+    );
   }
 
   get genreNames(): string {

@@ -6,7 +6,7 @@
 
     <div class="detail-info">
         <h2 class="detail-title">{{ item?.title || item?.name }}</h2>
-        <p class="detail-rating">Rating: {{ item?.vote_average || 'N/A' }}</p>
+        <p class="detail-rating">Rating: {{ item?.vote_average ? (item?.vote_average | number: '1.1-1') : 'N/A' }}</p>
         <p class="detail-overview">{{ item?.overview }}</p>
 
         <div class="additional-info">
