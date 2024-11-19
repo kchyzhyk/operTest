@@ -1,27 +1,86 @@
-# OperTest
+# Movie and TV Show Search Application
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.12.
+## Overview
 
-## Development server
+This is a Movie and TV Show Search Application built using **Angular**. The app allows users to search for movies and TV shows and view detailed information about selected items. It fetches data from **The Movie Database (TMDb)** API to display popular, trending, and recommended movies and TV shows.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Features
 
-## Code scaffolding
+- **Search for Movies and TV Shows**: Users can search for both movies and TV shows by title.
+- **Dynamic Item Details**: Click on a movie or TV show to see detailed information, such as ratings, genres, and an overview.
+- **Responsive**: The application is optimized for both desktop and mobile viewing.
+- **Infinite Scroll**: Movie and TV Show lists are displayed with infinite scrolling.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Technologies Used
 
-## Build
+- **Frontend**: Angular, TypeScript, SCSS
+- **Backend/API**: TMDb API
+- **Routing**: Angular Router
+- **State Management**: RxJS
+- **Forms**: Angular Forms
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Setup and Installation
 
-## Running unit tests
+### Prerequisites
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- **Node.js** (v16 or higher)
+- **Angular CLI**
 
-## Running end-to-end tests
+### Installation Steps
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+1. Clone the repository to your local machine:
 
-## Further help
+   git clone <repository_url>
+   cd <project_directory>
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+2. Install the necessary dependencies:
+
+   npm install
+
+3. Start the application:
+
+   ng serve
+
+4. Open the application in your browser:
+   Navigate to http://localhost:4200 to see the app running.
+
+## API Integration
+
+The app interacts with the TMDb API to fetch movie and TV show data.
+
+# API Endpoints Used:
+
+- Popular Movies: GET /movie/popular
+- Popular TV Shows: GET /tv/popular
+- Search for Movies/TV Shows: GET /search/multi?query=<search_term>
+- Item Details: GET /movie/<id> or GET /tv/<id>
+
+## Components
+
+# SearchBarComponent
+
+- Provides an input field for users to search for movies and TV shows.
+- Implements live search with debounced input.
+- Displays search results dynamically.
+
+# ItemListComponent
+
+- Displays a list of movies and TV shows.
+- Uses infinite scrolling to load more items as the user scrolls.
+
+# ItemDetailComponent
+
+- Displays detailed information for selected movies or TV shows.
+- Fetches the item details from the API based on the item type (movie or tv) and ID.
+
+## Routes
+
+# Main Routes
+
+- Home: / (Displays trending and popular items)
+- Item Detail: /item/:type/:id (Displays details of a specific movie or TV show) - :type: movie or tv - :id: The unique ID of the item
+
+# Example:
+
+    /item/movie/12345 — Shows details of a movie with ID 12345
+    /item/tv/1396 — Shows details of the TV show "Breaking Bad"
