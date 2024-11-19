@@ -6,7 +6,7 @@
 <div class="search-results" *ngIf="searchTerm.length >= 3 && searchResults.length > 0">
     <ul>
         <li *ngFor="let item of searchResults">
-            <a [routerLink]="['/item', item.id]"  (click)="hideResults()">
+            <a [routerLink]="['/item', item.name ? 'tv' : 'movie', item.id]"  (click)="hideResults()">
                 {{ item.name || item.title }}
             </a>
         </li>

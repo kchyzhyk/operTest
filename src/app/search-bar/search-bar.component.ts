@@ -5,11 +5,12 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
-import { FormsModule } from '@angular/forms'; // Import FormsModule
+import { FormsModule } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, Subject, switchMap } from 'rxjs';
 import { ApiService } from '../api.service';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-search-bar',
@@ -21,8 +22,9 @@ import { RouterLink } from '@angular/router';
 export class SearchBarComponent implements OnInit, OnDestroy {
   searchTerm: string = '';
   searchResults: any[] = [];
+
   private searchSubject: Subject<string> = new Subject<string>();
-  @Output() search = new EventEmitter<string>();
+  @Output() search = new EventEmitter<any[]>();
 
   constructor(private apiService: ApiService) {}
 
@@ -33,15 +35,27 @@ export class SearchBarComponent implements OnInit, OnDestroy {
         distinctUntilChanged(),
         switchMap((term) => {
           if (term.length >= 3) {
-            return this.apiService.search(term, 'movie');
+            return this.apiService.search(term, 'movie').pipe(
+              switchMap((movieResults) =>
+                this.apiService.search(term, 'tv').pipe(
+                  map((tvResults) => ({
+                    movies: movieResults?.results || [],
+                    tvShows: tvResults?.results || [],
+                  }))
+                )
+              )
+            );
           } else {
             return [];
           }
         })
       )
       .subscribe((results) => {
-        this.searchResults = results?.results || [];
-        this.search.emit(results);
+        if (results && results.movies && results.tvShows) {
+          this.searchResults = [...results.movies, ...results.tvShows];
+          this.searchResults.sort((a, b) => a.title.localeCompare(b.title));
+        }
+        this.search.emit(this.searchResults);
       });
   }
 

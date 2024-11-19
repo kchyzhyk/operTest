@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from '../api.service';
 
 @Component({
@@ -14,7 +14,11 @@ export class ItemDetailComponent implements OnInit {
   @Input() item: any;
   @Output() closeDetail = new EventEmitter<void>();
 
-  constructor(private route: ActivatedRoute, private apiService: ApiService) {}
+  constructor(
+    private route: ActivatedRoute,
+    private apiService: ApiService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
@@ -45,6 +49,6 @@ export class ItemDetailComponent implements OnInit {
   }
 
   onClose(): void {
-    this.closeDetail.emit();
+    this.router.navigate(['']);
   }
 }
